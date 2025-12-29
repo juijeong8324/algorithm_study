@@ -3,9 +3,11 @@
 ### Key Point
 
 ![Alt text](image-1.png)
-Bineary Search without Merge = Divide each array into left and right parts appropriately.
+Binary Search without Merge = Divide each array into left and right parts appropriately.
 
 <br>
+
+### Algorithm Approach
 
 1. **Determine paritions Each Array**
 
