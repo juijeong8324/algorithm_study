@@ -3,5 +3,6 @@
     "*.mdx": "markdown",
     "vector": "cpp",
     "xutility": "cpp"
-  }
+  },
+  "python.languageServer": "None"
 }
