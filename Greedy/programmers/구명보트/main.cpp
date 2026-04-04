@@ -14,3 +14,29 @@ int solution(vector<int> people, int limit) {
     }
     return answer++;
 };
+
+// 2차 코드 
+int solution(vector<int> people, int limit) {
+    int answer = 0;
+    
+    // 정렬 
+    sort(people.begin(), people.end());
+    
+    // 최대한 최소  + 최대 조합
+    // 안 된다면 최대값 혼자 
+    int i = 0;
+    int j = people.size()-1;
+    while(i <= j){ // 자기자신에 대해서도 answer를 추가해야 함! 
+        if(people[i] + people[j] <= limit){
+            answer++;
+            i++;
+            j--;
+        }
+        else{
+            answer++;
+            j--;
+        }
+    }
+    
+    return answer;
+}
