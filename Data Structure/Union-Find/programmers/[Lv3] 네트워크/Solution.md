@@ -3,7 +3,6 @@
 ## 문제
 
 - **Input**
-
   - n: 컴퓨터 개수 (1 이상 200 이하)
   - computers: 연결에 대한 정보가 담긴 2차원 배열 (0부터 n-1인 정수)
     - i번 - j번 컴퓨터 연결: computers[i][j] = 1, 즉 양방향임을 알 수 있음
@@ -60,7 +59,12 @@ A - B → B - C → C - A
 ![Alt text](image-3.png)
 
 여기서 핵심은 **Path Compression**  
-모든 노드의 부모를 직접 root로 바꿔준다. (path compression 없이 find를 재귀호출 하여 root를 찾아도 상관없다다.)
+모든 노드의 부모를 직접 root로 바꿔준다. (path compression 없이 find를 재귀호출 하여 root를 찾아도 상관없다.)
+
+> 🤔 Path Compression을 왜 할까?
+> `find()` 호출 시 루트를 찾기 위한 경로 상 모든 노드가 root에 연결된다. 이후 find 호출 시 시간복잡도가 전부 O(1)에 가까워진다. 즉, 비용을 몰아서 한 번에 몰아서 내고 이후에 거의 공짜로 쓰는 구조다.
+
+![alt text](image-4.png)
 
 <br>
 
@@ -87,6 +91,8 @@ Merge 하려는 각 노드가 속한 집합의 root를 각각 찾는다.
 
 한 root를 다른 root의 자식으로 만들면 두 집합을 같은 집합으로 합쳐진다.  
 즉 root 1의 부모를 1 -> 5
+
+> ⚠️ 위 예시는 Path Compression이 적용되지 않은 상태에서 Union 하는 것입니다! 왜냐하면 `find` 연산 이후에 4, 2, 1 번째의 parent가 5로 update되어야 함
 
 <br>
 <br>

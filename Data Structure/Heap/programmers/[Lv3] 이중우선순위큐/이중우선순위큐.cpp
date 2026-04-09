@@ -20,7 +20,7 @@
 using namespace std;
 
 vector<int> solution(vector<string> operations) {
-    priority_queue<int> max_heap;
+    priority_queue<int> max_heap; // 최대힙임
     priority_queue<int, vector<int>, greater<int>> min_heap;
     unordered_map<int,int> count;
     

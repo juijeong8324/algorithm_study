@@ -45,3 +45,56 @@ int solution(int n, vector<vector<int>> computers) {
     }
     return answer.size();
 }
+
+/* 
+    정석 풀이 버전
+*/
+
+#include <string>
+#include <vector>
+#include <set>
+
+using namespace std;
+
+vector<int> node; // 전역 변수
+
+// x의 루트 부모 찾기 
+int find(int x){
+    if(node[x] != x){
+        // 자기 자신이 루트가 아닌 경우 
+        node[x] = find(node[x]);
+    }
+    
+    return node[x];
+}
+
+void union_(int a, int b){
+    // Find partent 
+    a = find(a);
+    b = find(b);
+    
+    // Union = 즉 내 루트를 다른 루트에 연결
+    if(a != b){
+        node[a] = b;
+    }
+    
+}
+
+int solution(int n, vector<vector<int>> computers) {
+    node = vector<int>(n,0); // n개를 모두 0으로 초기화 
+    
+    for(int i=0; i<n; i++){
+        node[i] = i;
+    }
+    
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            if(computers[i][j] == 1){
+                union_(i, j);
+            }
+        }
+    }
+    
+    
+    return set<int>(node.begin(), node.end()).size();
+}
